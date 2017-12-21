@@ -81,8 +81,8 @@ def clean_vocab(vocab):
 def train_naive_bayes(input_pos, input_neg, smoothing_factor):
     log_likelihood = {}
     vocab_total = get_vocab_training(input_pos, input_neg)
-    freq_dist_pos = big_doc_c(training_pos)
-    freq_dist_neg = big_doc_c(training_neg)
+    freq_dist_pos = big_doc_c(input_pos)
+    freq_dist_neg = big_doc_c(input_neg)
     count_total_pos = freq_dist_pos.N()
     count_total_neg = freq_dist_neg.N()
     v = len(vocab_total)
@@ -153,7 +153,7 @@ def give_accuracy(train_pos, train_neg, test_output):
 
 def print_output(output_dict, out_file, devset):
     op = open(out_file, 'w')
-    ip = io.open(devset, 'r')
+    ip = open(devset, 'r')
     for line in ip.readlines():
         op_key = str(line.split(None, 1)[0])
         if op_key in output_dict:
@@ -169,11 +169,11 @@ if __name__ == "__main__":
     gold_neg = r'hotelT-train.txt'
     dev_set = r'test_doc.txt'
     verdict = test_naive_bayes(training_pos, training_neg, dev_set, 1)
-    accuracy = give_accuracy(gold_pos, gold_neg, verdict)
-    output_file = 'output_NB.txt'
-    print_output(verdict, output_file, dev_set)
-    print(verdict)
-    print(accuracy)
+    #accuracy = give_accuracy(gold_pos, gold_neg, verdict)
+    #output_file = 'output_NB.txt'
+    #print_output(verdict, output_file, dev_set)
+    #print(verdict)
+    #print(accuracy)
 
     #   training_pos = sys.argv[1]  # r'hotelNegT-train.txt' #
     #   training_neg = sys.argv[2]  # r'hotelPosT-train.txt'  #
