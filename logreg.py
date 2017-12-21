@@ -1,15 +1,10 @@
 import sklearn
-from sklearn import datasets
 from os import listdir
 from os.path import isfile, join
 import io
-from sklearn import svm
 import collections
 import NB
-import scipy as sp
-import numpy as np
-from scipy.sparse import csr_matrix, vstack
-from sklearn.linear_model import LogisticRegression
+
 
 
 def predict_classify(category_path, test_path):
@@ -26,8 +21,7 @@ def predict_classify(category_path, test_path):
     vectorizer = sklearn.feature_extraction.text.TfidfVectorizer(ngram_range=(1, 3))
     training_vector = vectorizer.fit_transform(ip_data.data)
     test_vector = vectorizer.transform(ip_test)
-    classifier = svm.LinearSVC()
-    #classifier = sklearn.linear_model.LogisticRegression()
+    classifier = sklearn.linear_model.LogisticRegression()
     classifier.fit(training_vector, ip_data.target)
     prediction = classifier.predict(test_vector)
 
