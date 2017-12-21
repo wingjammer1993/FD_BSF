@@ -1,20 +1,6 @@
-import io
 import sklearn
-from sklearn import datasets
-from os import listdir
-from os.path import isfile, join
 import io
-from sklearn import svm
-import collections
-import NB
-import scipy as sp
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-import numpy as np
-from scipy.sparse import csr_matrix, vstack
-from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
-import nltk
 import NB
 
 
@@ -130,18 +116,18 @@ if __name__ == "__main__":
     verdict_1 = predict_test(tp, p_tar, test_pos)
     verdict_2 = predict_test(tp, p_tar, test_neg)
     print_output(outfile, test_set, verdict_1, verdict_2)
-    count = 0
-    ip = open(test_set, 'r')
-    for line in ip.readlines():
-        if str(line.split(None, 1)[0]) in verdict_1:
-            if verdict_1[str(line.split(None, 1)[0])] == gs[str(line.split(None, 1)[0])][-1]:
-                count += 1
-        if str(line.split(None, 1)[0]) in verdict_2:
-            if verdict_2[str(line.split(None, 1)[0])] == gs[str(line.split(None, 1)[0])][-1]:
-                count += 1
-
-    length = (len(verdict_1)+len(verdict_2))
-    print(count/float(length))
+    # count = 0
+    # ip = open(test_set, 'r')
+    # for line in ip.readlines():
+    #     if str(line.split(None, 1)[0]) in verdict_1:
+    #         if verdict_1[str(line.split(None, 1)[0])] == gs[str(line.split(None, 1)[0])][-1]:
+    #             count += 1
+    #     if str(line.split(None, 1)[0]) in verdict_2:
+    #         if verdict_2[str(line.split(None, 1)[0])] == gs[str(line.split(None, 1)[0])][-1]:
+    #             count += 1
+    #
+    # length = (len(verdict_1)+len(verdict_2))
+    # print(count/float(length))
 
 
 
